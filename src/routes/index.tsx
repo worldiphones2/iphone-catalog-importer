@@ -20,7 +20,6 @@ import { useEffect, useState, type CSSProperties } from "react";
 
 import heroImage from "@/assets/world-iphones-hero.jpg";
 import lineupImage from "@/assets/world-iphones-lineup.jpg";
-import iphone17CatalogImage from "@/assets/iphone-17-catalog.webp";
 import { listPublicProducts, type PublicProduct } from "@/lib/products.functions";
 import { formatPrice } from "@/lib/format";
 import { getOfficialVariants } from "@/lib/product-images";
