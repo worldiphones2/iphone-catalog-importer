@@ -1,0 +1,5 @@
+- [x] Concluir galeria oficial por cor e três vistas no catálogo
+- [x] Permitir editar variantes de cor e fotos no painel
+- [x] Corrigir ícone e abertura do WhatsApp
+- [x] Validar catálogo e WhatsApp com o mínimo de chamadas possível
+- [ ] Corrigir somente o iPhone 17 Pro Max Silver com três assets reais na ordem verso → lateral → frente, sem data URLs
