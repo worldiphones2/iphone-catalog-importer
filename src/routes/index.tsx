@@ -20,7 +20,6 @@ import { useEffect, useState, type CSSProperties } from "react";
 
 import heroImage from "@/assets/world-iphones-hero.jpg";
 import lineupImage from "@/assets/world-iphones-lineup.jpg";
-import iphone17CatalogImage from "@/assets/iphone-17-catalog.webp";
 import { listPublicProducts, type PublicProduct } from "@/lib/products.functions";
 import { formatPrice } from "@/lib/format";
 import { getOfficialVariants } from "@/lib/product-images";
@@ -201,20 +200,13 @@ function StockMeter({ quantity }: { quantity: number }) {
 }
 
 function ProductCard({ product, index }: { product: PublicProduct; index: number }) {
-  const officialVariants = getOfficialVariants(product.name);
-  const useOfficialGallery = product.name.startsWith("iPhone 17 Pro Max") || product.name.startsWith("iPhone 17 Pro") || product.name === "iPhone 17";
-  const variants = useOfficialGallery && officialVariants.length > 0
-    ? officialVariants
-    : product.image_variants.length > 0
-      ? product.image_variants
-      : officialVariants;
-  const [colorIndex, setColorIndex] = useState(0);
-  const [imageIndex, setImageIndex] = useState(0);
+  const variants: ReturnType<typeof getOfficialVariants> = [];
+  const useOfficialGallery = false;
+  const [colorIndex] = useState(0);
+  const [imageIndex] = useState(0);
   const activeVariant = variants[colorIndex] ?? variants[0];
-  const activeImages = activeVariant?.images ?? [];
-  const activeImage = product.name === "iPhone 17"
-    ? iphone17CatalogImage
-    : activeImages[imageIndex] ?? activeImages[0] ?? product.image_url;
+  const activeImages: string[] = [];
+  const activeImage: string | null = null;
   const hasDiscount =
     product.is_on_sale && !!product.compare_at_price && product.compare_at_price > product.price;
   const discount = hasDiscount
