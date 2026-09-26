@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { queryOptions, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -16,22 +15,16 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import { useEffect, useState, type CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 
 import heroImage from "@/assets/world-iphones-hero.jpg";
 import lineupImage from "@/assets/world-iphones-lineup.jpg";
-import { listPublicProducts, type PublicProduct } from "@/lib/products.functions";
+import { PRODUCTS, type Product } from "@/data/products";
 import { formatPrice } from "@/lib/format";
 import { getOfficialVariants } from "@/lib/product-images";
-import { supabase } from "@/integrations/supabase/client";
-
-const productsQuery = queryOptions({
-  queryKey: ["public-products"],
-  queryFn: () => listPublicProducts(),
-});
 
 export const Route = createFileRoute("/")({
-  loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery),
+
   errorComponent: () => (
     <main className="grid min-h-screen place-items-center bg-background px-6 text-center text-foreground">
       <p className="text-sm text-muted-foreground">
@@ -199,11 +192,11 @@ function StockMeter({ quantity }: { quantity: number }) {
   );
 }
 
-function ProductCard({ product, index }: { product: PublicProduct; index: number }) {
+function ProductCard({ product, index }: { product: Product; index: number }) {
   const variants: ReturnType<typeof getOfficialVariants> = [];
   const useOfficialGallery = false;
-  const [colorIndex] = useState(0);
-  const [imageIndex] = useState(0);
+  const [colorIndex, setColorIndex] = useState(0);
+  const [imageIndex, setImageIndex] = useState(0);
   const activeVariant = variants[colorIndex] ?? variants[0];
   const activeImages: string[] = [];
   const activeImage: string | null = null;
@@ -332,20 +325,9 @@ function ProductCard({ product, index }: { product: PublicProduct; index: number
 }
 
 function Index() {
-  const { data: products } = useSuspenseQuery(productsQuery);
-  const queryClient = useQueryClient();
+  const products = PRODUCTS;
 
-  useEffect(() => {
-    const channel = supabase
-      .channel("products-public")
-      .on("postgres_changes", { event: "*", schema: "public", table: "products" }, () => {
-        queryClient.invalidateQueries({ queryKey: ["public-products"] });
-      })
-      .subscribe();
-    return () => {
-      supabase.removeChannel(channel);
-    };
-  }, [queryClient]);
+
 
   return (
     <main className="overflow-hidden bg-background text-foreground">
