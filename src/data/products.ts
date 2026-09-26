@@ -15,6 +15,20 @@ export type Product = {
 
 export const PRODUCTS: Product[] = [
   {
+    id: "iphone-17-pro-max",
+    name: "iPhone 17 Pro Max",
+    capacity: "512 GB",
+    condition: "Novo • Lacrado",
+    badge: "O Mais Desejado • Resta 1 unidade",
+    price: 9799,
+    compare_at_price: 12999,
+    is_on_sale: true,
+    stock_quantity: 1,
+    installment: "",
+    tone: "titanium",
+    image_url: "/iphone-17-pro-max-lineup.png",
+  },
+  {
     id: "iphone-17-pro",
     name: "iPhone 17 Pro",
     capacity: "256 GB",
