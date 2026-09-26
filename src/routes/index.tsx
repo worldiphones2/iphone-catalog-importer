@@ -248,28 +248,37 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           <>
             <button
               type="button"
-              className="gallery-arrow left-3"
+              className="gallery-arrow left-3 z-20"
               aria-label="Foto anterior"
-              onClick={() => setImageIndex((current) => (current - 1 + activeImages.length) % activeImages.length)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setImageIndex((current) => (current - 1 + activeImages.length) % activeImages.length);
+              }}
             >
               <ChevronLeft size={17} />
             </button>
             <button
               type="button"
-              className="gallery-arrow right-3"
+              className="gallery-arrow right-3 z-20"
               aria-label="Próxima foto"
-              onClick={() => setImageIndex((current) => (current + 1) % activeImages.length)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setImageIndex((current) => (current + 1) % activeImages.length);
+              }}
             >
               <ChevronRight size={17} />
             </button>
-            <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5" aria-label="Vistas do produto">
+            <div className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 gap-1.5" aria-label="Vistas do produto">
               {activeImages.map((_, viewIndex) => (
                 <button
                   key={viewIndex}
                   type="button"
                   className={`gallery-dot ${viewIndex === imageIndex ? "gallery-dot-active" : ""}`}
                   aria-label={`Ver foto ${viewIndex + 1}`}
-                  onClick={() => setImageIndex(viewIndex)}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setImageIndex(viewIndex);
+                  }}
                 />
               ))}
             </div>
