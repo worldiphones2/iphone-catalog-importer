@@ -133,7 +133,25 @@ function RootComponent() {
 
 const WHATSAPP_NUMBER = "5547992533977";
 
+function useWhatsAppDesktopRedirect() {
+  useEffect(() => {
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    if (isMobile) return;
+    const handler = (event: MouseEvent) => {
+      const link = (event.target as HTMLElement | null)?.closest?.("a") as HTMLAnchorElement | null;
+      if (!link || !link.href.startsWith("https://wa.me/")) return;
+      const url = new URL(link.href);
+      const phone = url.pathname.replace(/\D/g, "");
+      const text = url.searchParams.get("text") ?? "";
+      link.href = `https://web.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(text)}`;
+    };
+    document.addEventListener("click", handler, true);
+    return () => document.removeEventListener("click", handler, true);
+  }, []);
+}
+
 function WhatsAppFloat() {
+  useWhatsAppDesktopRedirect();
   const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     "Olá! Quero conhecer os iPhones disponíveis na World iPhones."
   )}`;
