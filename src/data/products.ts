@@ -15,6 +15,20 @@ export type Product = {
 
 export const PRODUCTS: Product[] = [
   {
+    id: "iphone-18",
+    name: "iPhone 18",
+    capacity: "512 GB + AppleCare+",
+    condition: "Novo • Lacrado com Garantia Apple Care+",
+    badge: "Edição Especial • Última unidade",
+    price: 11499,
+    compare_at_price: 14999,
+    is_on_sale: true,
+    stock_quantity: 1,
+    installment: "",
+    tone: "titanium",
+    image_url: "/iphone-18-lineup.png",
+  },
+  {
     id: "iphone-17-pro-max",
     name: "iPhone 17 Pro Max",
     capacity: "512 GB",
