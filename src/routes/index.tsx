@@ -192,7 +192,7 @@ function StockMeter({ quantity }: { quantity: number }) {
   );
 }
 
-function ProductCard({ product, index }: { product: PublicProduct; index: number }) {
+function ProductCard({ product, index }: { product: Product; index: number }) {
   const variants: ReturnType<typeof getOfficialVariants> = [];
   const useOfficialGallery = false;
   const [colorIndex] = useState(0);
@@ -325,20 +325,9 @@ function ProductCard({ product, index }: { product: PublicProduct; index: number
 }
 
 function Index() {
-  const { data: products } = useSuspenseQuery(productsQuery);
-  const queryClient = useQueryClient();
+  const products = PRODUCTS;
 
-  useEffect(() => {
-    const channel = supabase
-      .channel("products-public")
-      .on("postgres_changes", { event: "*", schema: "public", table: "products" }, () => {
-        queryClient.invalidateQueries({ queryKey: ["public-products"] });
-      })
-      .subscribe();
-    return () => {
-      supabase.removeChannel(channel);
-    };
-  }, [queryClient]);
+
 
   return (
     <main className="overflow-hidden bg-background text-foreground">
