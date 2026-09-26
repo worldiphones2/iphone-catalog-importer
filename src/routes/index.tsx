@@ -357,11 +357,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           <a
             className="icon-button shrink-0"
             aria-label={`Consultar ${product.name} pelo WhatsApp`}
-            href={whatsapp(
-              soldOut
-                ? `Olá! Quero avisos quando o ${product.name} ${product.capacity} voltar ao estoque.`
-                : `Olá! Quero garantir o ${product.name} ${product.capacity} por ${formatPrice(product.price)}.`,
-            )}
+            href={whatsapp(whatsappMessage)}
             target="_blank"
             rel="noreferrer"
           >
