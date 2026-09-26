@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect, type CSSProperties } from "react";
 
+import brandLogo from "@/assets/world-iphones-logo.png.asset.json";
 import heroImage from "@/assets/world-iphones-hero.jpg";
 import lineupImage from "@/assets/world-iphones-lineup.jpg";
 import { PRODUCTS, type Product } from "@/data/products";
@@ -87,9 +88,14 @@ const faqs = [
 function Logo() {
   return (
     <a href="#inicio" className="flex items-center gap-3" aria-label="World iPhones, início">
-      <span className="grid size-7 place-items-center rounded-full border border-brand/50 text-[10px] font-semibold text-brand">
-        W
-      </span>
+      <img
+        src={brandLogo.url}
+        alt=""
+        width={104}
+        height={103}
+        className="size-9 shrink-0"
+        aria-hidden="true"
+      />
       <span className="text-sm font-semibold uppercase tracking-[0.24em] text-foreground">
         World <span className="font-normal text-muted-foreground">iPhones</span>
       </span>
