@@ -86,13 +86,20 @@ const faqs = [
 
 function Logo() {
   return (
-    <a href="#inicio" className="flex items-center gap-3" aria-label="World iPhones, início">
-      <span className="grid size-7 place-items-center rounded-full border border-brand/50 text-[10px] font-semibold text-brand">
-        W
-      </span>
-      <span className="text-sm font-semibold uppercase tracking-[0.24em] text-foreground">
-        World <span className="font-normal text-muted-foreground">iPhones</span>
-      </span>
+    <a href="#inicio" className="flex items-center gap-3 group" aria-label="World iPhones, início">
+      <img
+        src="/world-iphones-logo.png"
+        alt="World iPhones Emblem"
+        className="size-9 rounded-full object-cover border border-white/20 shadow-md group-hover:scale-105 transition-transform duration-300"
+      />
+      <div className="flex flex-col">
+        <span className="text-sm font-extrabold uppercase tracking-[0.22em] text-foreground group-hover:text-brand transition-colors">
+          World <span className="font-light text-brand">iPhones</span>
+        </span>
+        <span className="text-[9px] uppercase tracking-[0.28em] text-muted-foreground -mt-0.5">
+          Premium Apple Store
+        </span>
+      </div>
     </a>
   );
 }
