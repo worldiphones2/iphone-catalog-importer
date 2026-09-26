@@ -106,9 +106,6 @@
   .animate-rise { animation: rise 800ms cubic-bezier(.22,.8,.26,1) both; }
   .field { width: 100%; border: 1px solid var(--border); background: var(--background); color: var(--foreground); border-radius: 0.4rem; padding: 0.75rem 0.9rem; font-size: 0.9rem; letter-spacing: 0; text-transform: none; }
   .field:focus { outline: none; border-color: var(--brand); }
-  .whatsapp-float { position: fixed; right: 1.25rem; bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)); z-index: 9999; display: inline-grid; width: 3.5rem; height: 3.5rem; place-items: center; border-radius: 999px; background: oklch(0.7 0.18 145); color: oklch(0.12 0.005 70); box-shadow: 0 10px 28px oklch(0 0 0 / 42%); transition: transform 200ms ease, box-shadow 200ms ease; }
-  .whatsapp-float:hover { transform: scale(1.08) translateY(-2px); box-shadow: 0 14px 34px oklch(0 0 0 / 55%); }
-  .whatsapp-float svg { width: 1.55rem; height: 1.55rem; }
 }
 
 @keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
