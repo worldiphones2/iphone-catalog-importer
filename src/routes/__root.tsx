@@ -95,7 +95,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
     ],
   }),
   shellComponent: RootShell,
@@ -133,8 +133,26 @@ function RootComponent() {
 
 const WHATSAPP_NUMBER = "5547992533977";
 
+function useWhatsAppDesktopRedirect() {
+  useEffect(() => {
+    const isMobile = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+    if (isMobile) return;
+    const handler = (event: MouseEvent) => {
+      const link = (event.target as HTMLElement | null)?.closest?.("a") as HTMLAnchorElement | null;
+      if (!link || !link.href.startsWith("https://wa.me/")) return;
+      const url = new URL(link.href);
+      const phone = url.pathname.replace(/\D/g, "");
+      const text = url.searchParams.get("text") ?? "";
+      link.href = `https://web.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(text)}`;
+    };
+    document.addEventListener("click", handler, true);
+    return () => document.removeEventListener("click", handler, true);
+  }, []);
+}
+
 function WhatsAppFloat() {
-  const href = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(
+  useWhatsAppDesktopRedirect();
+  const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     "Olá! Quero conhecer os iPhones disponíveis na World iPhones."
   )}`;
 
