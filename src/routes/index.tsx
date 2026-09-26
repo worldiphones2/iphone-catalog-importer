@@ -1,12 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { queryOptions, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import {
   ArrowDown,
   ArrowUpRight,
   BatteryCharging,
   Check,
-  ChevronLeft,
-  ChevronRight,
   ChevronDown,
   Flame,
   Headphones,
@@ -16,29 +13,46 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import { useEffect, useState, type CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 
 import heroImage from "@/assets/world-iphones-hero.jpg";
 import lineupImage from "@/assets/world-iphones-lineup.jpg";
-import { listPublicProducts, type PublicProduct } from "@/lib/products.functions";
+import iphone13Image from "@/assets/iphone-13-lineup.png";
 import { formatPrice } from "@/lib/format";
-import { getOfficialVariants } from "@/lib/product-images";
-import { supabase } from "@/integrations/supabase/client";
 
-const productsQuery = queryOptions({
-  queryKey: ["public-products"],
-  queryFn: () => listPublicProducts(),
-});
+type PublicProduct = {
+  id: string;
+  name: string;
+  capacity: string;
+  condition: string;
+  badge: string;
+  price: number;
+  compare_at_price: number | null;
+  is_on_sale: boolean;
+  stock_quantity: number;
+  installment: string;
+  image_url: string | null;
+  tone: string;
+};
+
+const STATIC_PRODUCTS: PublicProduct[] = [
+  {
+    id: "iphone-13",
+    name: "iPhone 13",
+    capacity: "128 GB",
+    condition: "Seminovo · Vitrine",
+    badge: "Popular",
+    price: 2899,
+    compare_at_price: 3299,
+    is_on_sale: true,
+    stock_quantity: 5,
+    installment: "12× de R$ 241,58",
+    image_url: iphone13Image,
+    tone: "blue",
+  },
+];
 
 export const Route = createFileRoute("/")({
-  loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery),
-  errorComponent: () => (
-    <main className="grid min-h-screen place-items-center bg-background px-6 text-center text-foreground">
-      <p className="text-sm text-muted-foreground">
-        Não foi possível carregar o catálogo agora. Tente novamente em instantes.
-      </p>
-    </main>
-  ),
   notFoundComponent: () => (
     <main className="grid min-h-screen place-items-center bg-background text-foreground">
       <p className="text-sm text-muted-foreground">Página não encontrada.</p>
@@ -200,13 +214,9 @@ function StockMeter({ quantity }: { quantity: number }) {
 }
 
 function ProductCard({ product, index }: { product: PublicProduct; index: number }) {
-  const variants: ReturnType<typeof getOfficialVariants> = [];
-  const useOfficialGallery = false;
-  const [colorIndex] = useState(0);
   const [imageIndex] = useState(0);
-  const activeVariant = variants[colorIndex] ?? variants[0];
-  const activeImages: string[] = [];
-  const activeImage: string | null = null;
+  const activeImage: string | null = product.image_url ?? null;
+  const activeImages: string[] = activeImage ? [activeImage] : [];
   const hasDiscount =
     product.is_on_sale && !!product.compare_at_price && product.compare_at_price > product.price;
   const discount = hasDiscount
@@ -233,43 +243,12 @@ function ProductCard({ product, index }: { product: PublicProduct; index: number
         {activeImage ? (
           <img
             src={activeImage}
-            alt={`${product.name} ${activeVariant?.name ?? product.capacity} — vista ${imageIndex + 1}`}
-            className={`size-full object-contain p-5 ${useOfficialGallery ? `product-phone-image product-phone-image-${imageIndex + 1}` : ""}`}
+            alt={`${product.name} ${product.capacity}`}
+            className="size-full object-contain p-5"
             loading="lazy"
           />
         ) : (
           <PhoneVisual tone={product.tone} />
-        )}
-        {activeImages.length > 1 && (
-          <>
-            <button
-              type="button"
-              className="gallery-arrow left-3"
-              aria-label="Foto anterior"
-              onClick={() => setImageIndex((current) => (current - 1 + activeImages.length) % activeImages.length)}
-            >
-              <ChevronLeft size={17} />
-            </button>
-            <button
-              type="button"
-              className="gallery-arrow right-3"
-              aria-label="Próxima foto"
-              onClick={() => setImageIndex((current) => (current + 1) % activeImages.length)}
-            >
-              <ChevronRight size={17} />
-            </button>
-            <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 gap-1.5" aria-label="Vistas do produto">
-              {activeImages.map((_, viewIndex) => (
-                <button
-                  key={viewIndex}
-                  type="button"
-                  className={`gallery-dot ${viewIndex === imageIndex ? "gallery-dot-active" : ""}`}
-                  aria-label={`Ver foto ${viewIndex + 1}`}
-                  onClick={() => setImageIndex(viewIndex)}
-                />
-              ))}
-            </div>
-          </>
         )}
       </div>
       <div className="border-t border-border p-5 sm:p-6">
@@ -332,20 +311,7 @@ function ProductCard({ product, index }: { product: PublicProduct; index: number
 }
 
 function Index() {
-  const { data: products } = useSuspenseQuery(productsQuery);
-  const queryClient = useQueryClient();
-
-  useEffect(() => {
-    const channel = supabase
-      .channel("products-public")
-      .on("postgres_changes", { event: "*", schema: "public", table: "products" }, () => {
-        queryClient.invalidateQueries({ queryKey: ["public-products"] });
-      })
-      .subscribe();
-    return () => {
-      supabase.removeChannel(channel);
-    };
-  }, [queryClient]);
+  const products = STATIC_PRODUCTS;
 
   return (
     <main className="overflow-hidden bg-background text-foreground">
