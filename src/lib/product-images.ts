@@ -87,18 +87,18 @@ export const OFFICIAL_PRODUCT_IMAGES: Record<string, ProductImageVariant[]> = {
     { name: "Rosa", color: "#ead0d4", images: [] },
   ],
   "iPhone 14": [
-    { name: "Meia-noite", "#34363a", images: [] },
-    { name: "Estelar", "#eee7db", images: [] },
-    { name: "Rosa", "#e8c3d1", images: [] },
-    { name: "Azul", "#a8bfd0", images: [] },
-    { name: "Roxo", "#c8b9d1", images: [] },
+    { name: "Meia-noite", color: "#34363a", images: [] },
+    { name: "Estelar", color: "#eee7db", images: [] },
+    { name: "Rosa", color: "#e8c3d1", images: [] },
+    { name: "Azul", color: "#a8bfd0", images: [] },
+    { name: "Roxo", color: "#c8b9d1", images: [] },
   ],
   "iPhone 13": [
-    { name: "Meia-noite", "#31353a", images: [] },
-    { name: "Estelar", "#f0ece4", images: [] },
-    { name: "Rosa", "#e7c5c2", images: [] },
-    { name: "Azul", "#47718a", images: [] },
-    { name: "Verde", "#394e42", images: [] },
+    { name: "Meia-noite", color: "#31353a", images: [] },
+    { name: "Estelar", color: "#f0ece4", images: [] },
+    { name: "Rosa", color: "#e7c5c2", images: [] },
+    { name: "Azul", color: "#47718a", images: [] },
+    { name: "Verde", color: "#394e42", images: [] },
   ],
 };
 
