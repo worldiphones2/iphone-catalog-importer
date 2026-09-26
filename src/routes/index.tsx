@@ -197,7 +197,7 @@ function StockMeter({ quantity }: { quantity: number }) {
 }
 
 function ProductCard({ product, index }: { product: Product; index: number }) {
-  const variants: ReturnType<typeof getOfficialVariants> = [];
+  const variants = getOfficialVariants(product.name);
   const useOfficialGallery = false;
   const [colorIndex, setColorIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);

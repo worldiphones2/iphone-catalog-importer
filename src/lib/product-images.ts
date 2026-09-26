@@ -23,77 +23,83 @@ const colors = (items: Array<[string, string, string]>) =>
   items.map(([name, color, base]) => ({ name, color, images: storeViews(base) }));
 
 export const OFFICIAL_PRODUCT_IMAGES: Record<string, ProductImageVariant[]> = {
-  "iPhone 17 Pro Max": [
-    { name: "Silver", color: "#d9dadd", images: [silverBackAsset.url, silverSideAsset.url, silverFrontAsset.url] },
-    { name: "Cosmic Orange", color: "#df7138", images: [cosmicOrangeAsset.url] },
-    { name: "Deep Blue", color: "#263853", images: [deepBlueAsset.url] },
+  "iPhone 18 Pro": [
+    { name: "Preto-titânio", color: "#2d2d2f", images: [] },
+    { name: "Titânio Natural", color: "#a8a299", images: [] },
+    { name: "Titânio Azul", color: "#3c4756", images: [] },
+    { name: "Titânio Vinho (Burgundy)", color: "#54252f", images: [] },
   ],
-  "iPhone 16 Plus": colors([
-    ["Ultramarino", "#778bc6", "iphone-16-plus-ultramarine-select-202409"],
-    ["Verde-acinzentado", "#8ea59a", "iphone-16-plus-teal-select-202409"],
-    ["Rosa", "#e8b7ca", "iphone-16-plus-pink-select-202409"],
-    ["Branco", "#eeeae2", "iphone-16-plus-white-select-202409"],
-    ["Preto", "#292827", "iphone-16-plus-black-select-202409"],
-  ]),
-  "iPhone 16": colors([
-    ["Ultramarino", "#778bc6", "iphone-16-ultramarine-select-202409"],
-    ["Verde-acinzentado", "#8ea59a", "iphone-16-teal-select-202409"],
-    ["Rosa", "#e8b7ca", "iphone-16-pink-select-202409"],
-    ["Branco", "#eeeae2", "iphone-16-white-select-202409"],
-    ["Preto", "#292827", "iphone-16-black-select-202409"],
-  ]),
-  "iPhone 15 Pro Max": colors([
-    ["Titânio natural", "#aaa294", "iphone-15-pro-max-naturaltitanium-select"],
-    ["Titânio azul", "#596678", "iphone-15-pro-max-bluetitanium-select"],
-    ["Titânio branco", "#e8e5df", "iphone-15-pro-max-whitetitanium-select"],
-    ["Titânio preto", "#3d3d3b", "iphone-15-pro-max-blacktitanium-select"],
-  ]),
-  "iPhone 15 Pro": colors([
-    ["Titânio natural", "#aaa294", "iphone-15-pro-naturaltitanium-select"],
-    ["Titânio azul", "#596678", "iphone-15-pro-bluetitanium-select"],
-    ["Titânio branco", "#e8e5df", "iphone-15-pro-whitetitanium-select"],
-    ["Titânio preto", "#3d3d3b", "iphone-15-pro-blacktitanium-select"],
-  ]),
-  "iPhone 15 Plus": colors([
-    ["Azul", "#d5e2e8", "iphone-15-plus-blue-select-202309"],
-    ["Rosa", "#ead0d4", "iphone-15-plus-pink-select-202309"],
-    ["Verde", "#d5dfd4", "iphone-15-plus-green-select-202309"],
-    ["Preto", "#353839", "iphone-15-plus-black-select-202309"],
-  ]),
-  "iPhone 15": colors([
-    ["Azul", "#d5e2e8", "iphone-15-blue-select-202309"],
-    ["Rosa", "#ead0d4", "iphone-15-pink-select-202309"],
-    ["Verde", "#d5dfd4", "iphone-15-green-select-202309"],
-    ["Preto", "#353839", "iphone-15-black-select-202309"],
-  ]),
-  "iPhone 14 Pro Max": colors([
-    ["Preto-espacial", "#4a4946", "iphone-14-pro-max-spaceblack-select"],
-    ["Roxo-profundo", "#635c68", "iphone-14-pro-max-deeppurple-select"],
-    ["Dourado", "#d8c4a9", "iphone-14-pro-max-gold-select"],
-    ["Prateado", "#e5e4df", "iphone-14-pro-max-silver-select"],
-  ]),
-  "iPhone 14": colors([
-    ["Azul", "#a8bfd0", "iphone-14-blue-select-202209"],
-    ["Meia-noite", "#34363a", "iphone-14-midnight-select-202209"],
-    ["Roxo", "#c8b9d1", "iphone-14-purple-select-202209"],
-    ["Estelar", "#eee7db", "iphone-14-starlight-select-202209"],
-  ]),
-  "iPhone 13": colors([
-    ["Azul", "#47718a", "iphone-13-blue-select-2021"],
-    ["Meia-noite", "#31353a", "iphone-13-midnight-select-2021"],
-    ["Rosa", "#e7c5c2", "iphone-13-pink-select-2021"],
-  ]),
-  "iPhone 12": colors([
-    ["Azul", "#315b74", "iphone-12-blue-select-2020"],
-    ["Preto", "#303033", "iphone-12-black-select-2020"],
-    ["Branco", "#f0ede8", "iphone-12-white-select-2020"],
-    ["Roxo", "#b8a9d1", "iphone-12-purple-select-2021"],
-  ]),
-  "iPhone SE (3ª geração)": colors([
-    ["Meia-noite", "#313338", "iphone-se-midnight-select-202203"],
-    ["Estelar", "#eee8dd", "iphone-se-starlight-select-202203"],
-    ["Vermelho", "#c8252c", "iphone-se-red-select-202203"],
-  ]),
+  "iPhone 17 Pro Max": [
+    { name: "Prateado", color: "#d9dadd", images: [] },
+    { name: "Titânio Laranja (Cosmic)", color: "#df7138", images: [] },
+    { name: "Azul Profundo", color: "#263853", images: [] },
+  ],
+  "iPhone 17 Pro": [
+    { name: "Prateado", color: "#d9dadd", images: [] },
+    { name: "Preto-espacial", color: "#343538", images: [] },
+    { name: "Azul Titânio", color: "#324357", images: [] },
+    { name: "Titânio Laranja", color: "#d96f39", images: [] },
+    { name: "Prata Iridescente", color: "#bce4e8", images: [] },
+  ],
+  "iPhone 17": [
+    { name: "Preto-espacial", color: "#2e3033", images: [] },
+    { name: "Branco", color: "#eeeae2", images: [] },
+    { name: "Verde-pistache", color: "#b3c99c", images: [] },
+    { name: "Azul-celeste", color: "#92b5d8", images: [] },
+    { name: "Lilás", color: "#d8c2e7", images: [] },
+  ],
+  "iPhone Air": [
+    { name: "Preto-espacial", color: "#242527", images: [] },
+    { name: "Branco", color: "#f2f2ee", images: [] },
+    { name: "Dourado Suave", color: "#e8dfcc", images: [] },
+    { name: "Azul-gelo", color: "#b9d2e3", images: [] },
+  ],
+  "iPhone 16 Pro Max": [
+    { name: "Titânio Deserto", color: "#c2a58d", images: [] },
+    { name: "Titânio Natural", color: "#aaa294", images: [] },
+    { name: "Titânio Branco", color: "#e8e5df", images: [] },
+    { name: "Titânio Preto", color: "#3d3d3b", images: [] },
+  ],
+  "iPhone 16 Pro": [
+    { name: "Titânio Deserto", color: "#c2a58d", images: [] },
+    { name: "Titânio Natural", color: "#aaa294", images: [] },
+    { name: "Titânio Branco", color: "#e8e5df", images: [] },
+    { name: "Titânio Preto", color: "#3d3d3b", images: [] },
+  ],
+  "iPhone 16": [
+    { name: "Preto", color: "#292827", images: [] },
+    { name: "Branco", color: "#eeeae2", images: [] },
+    { name: "Rosa", color: "#e8b7ca", images: [] },
+    { name: "Verde-acinzentado", color: "#8ea59a", images: [] },
+    { name: "Ultramarino", color: "#778bc6", images: [] },
+  ],
+  "iPhone 15 Pro Max": [
+    { name: "Titânio Natural", color: "#aaa294", images: [] },
+    { name: "Titânio Azul", color: "#596678", images: [] },
+    { name: "Titânio Branco", color: "#e8e5df", images: [] },
+    { name: "Titânio Preto", color: "#3d3d3b", images: [] },
+  ],
+  "iPhone 15": [
+    { name: "Preto", color: "#353839", images: [] },
+    { name: "Azul", color: "#d5e2e8", images: [] },
+    { name: "Verde", color: "#d5dfd4", images: [] },
+    { name: "Amarelo", color: "#f3e7b4", images: [] },
+    { name: "Rosa", color: "#ead0d4", images: [] },
+  ],
+  "iPhone 14": [
+    { name: "Meia-noite", "#34363a", images: [] },
+    { name: "Estelar", "#eee7db", images: [] },
+    { name: "Rosa", "#e8c3d1", images: [] },
+    { name: "Azul", "#a8bfd0", images: [] },
+    { name: "Roxo", "#c8b9d1", images: [] },
+  ],
+  "iPhone 13": [
+    { name: "Meia-noite", "#31353a", images: [] },
+    { name: "Estelar", "#f0ece4", images: [] },
+    { name: "Rosa", "#e7c5c2", images: [] },
+    { name: "Azul", "#47718a", images: [] },
+    { name: "Verde", "#394e42", images: [] },
+  ],
 };
 
 const IPHONE_17_CATALOG_IMAGE = "/iphone-17-catalog.webp";
