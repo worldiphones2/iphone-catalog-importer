@@ -94,11 +94,12 @@ export const OFFICIAL_PRODUCT_IMAGES: Record<string, ProductImageVariant[]> = {
     { name: "Roxo", color: "#c8b9d1", images: [] },
   ],
   "iPhone 13": [
-    { name: "Meia-noite", color: "#31353a", images: [] },
-    { name: "Estelar", color: "#f0ece4", images: [] },
-    { name: "Rosa", color: "#e7c5c2", images: [] },
-    { name: "Azul", color: "#47718a", images: [] },
-    { name: "Verde", color: "#394e42", images: [] },
+    { name: "Meia-noite", color: "#232a31", images: [] },
+    { name: "Estelar", color: "#faf6f0", images: [] },
+    { name: "Rosa", color: "#fae0dd", images: [] },
+    { name: "Azul", color: "#437793", images: [] },
+    { name: "Verde", color: "#3c4d42", images: [] },
+    { name: "(PRODUCT)RED", color: "#bf0012", images: [] },
   ],
 };
 
