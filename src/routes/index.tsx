@@ -18,7 +18,7 @@ import {
   Truck,
   X,
 } from "lucide-react";
-import { useState, type CSSProperties } from "react";
+import { useState, useEffect, type CSSProperties } from "react";
 
 import heroImage from "@/assets/world-iphones-hero.jpg";
 import lineupImage from "@/assets/world-iphones-lineup.jpg";
@@ -202,8 +202,16 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
   const [colorIndex, setColorIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
   const activeVariant = variants[colorIndex] ?? variants[0];
-  const activeImages: string[] = [];
-  const activeImage: string | null = product.image_url ?? null;
+  const activeImages: string[] = product.images ?? (product.image_url ? [product.image_url] : []);
+  const activeImage: string | null = activeImages[imageIndex] ?? product.image_url ?? null;
+
+  useEffect(() => {
+    if (activeImages.length <= 1) return;
+    const timer = setInterval(() => {
+      setImageIndex((current) => (current + 1) % activeImages.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, [activeImages.length]);
   const hasDiscount =
     product.is_on_sale && !!product.compare_at_price && product.compare_at_price > product.price;
   const discount = hasDiscount
