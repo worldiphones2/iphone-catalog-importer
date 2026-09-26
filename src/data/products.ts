@@ -26,6 +26,7 @@ export const PRODUCTS: Product[] = [
     stock_quantity: 5,
     installment: "",
     tone: "titanium",
+    image_url: "/iphone-16-pro-max-lineup.png",
   },
   {
     id: "iphone-16-pro",
