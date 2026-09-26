@@ -15,8 +15,8 @@ export type Product = {
 
 export const PRODUCTS: Product[] = [
   {
-    id: "iphone-18",
-    name: "iPhone 18",
+    id: "iphone-18-pro",
+    name: "iPhone 18 Pro",
     capacity: "512 GB + AppleCare+",
     condition: "Novo • Lacrado com Garantia Apple Care+",
     badge: "Edição Especial • Última unidade",
