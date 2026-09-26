@@ -10,9 +10,12 @@ import {
   Flame,
   Headphones,
   Menu,
+  MapPin,
   PackageCheck,
+  Search,
   ShieldCheck,
   Sparkles,
+  Truck,
   X,
 } from "lucide-react";
 import { useState, type CSSProperties } from "react";
@@ -43,12 +46,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Encontre seu próximo iPhone na World iPhones. Aparelhos selecionados, compra segura e atendimento personalizado.",
+          "Encontre seu próximo iPhone na World iPhones, com frete grátis para todo o Brasil, rastreamento e atendimento personalizado.",
       },
       { property: "og:title", content: "World iPhones | Seu próximo iPhone" },
       {
         property: "og:description",
-        content: "Catálogo de iPhones selecionados com atendimento próximo e compra segura.",
+        content: "Catálogo de iPhones selecionados com frete grátis para todo o Brasil e pedido rastreado.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -73,7 +76,7 @@ const faqs = [
   },
   {
     q: "Vocês realizam envios?",
-    a: "Sim. Consulte nossa equipe para confirmar prazo, valor e disponibilidade de entrega para a sua região.",
+    a: "Sim. Enviamos para todo o Brasil com frete grátis. Após o despacho, você recebe o código de rastreio para acompanhar o pedido até a entrega.",
   },
   {
     q: "Como faço para comprar?",
@@ -100,6 +103,7 @@ function Header() {
     ["Início", "#inicio"],
     ["Catálogo", "#catalogo"],
     ["Diferenciais", "#diferenciais"],
+    ["Envio", "#envio"],
     ["Como funciona", "#como-funciona"],
     ["Dúvidas", "#duvidas"],
   ];
@@ -425,6 +429,84 @@ function Index() {
                 </article>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      <section id="envio" className="border-b border-border bg-card">
+        <div className="page-shell grid gap-14 py-24 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-24 lg:py-32">
+          <div>
+            <p className="eyebrow">Entrega segura em todo o Brasil</p>
+            <h2 className="mt-5 max-w-xl text-4xl font-light leading-tight sm:text-5xl">
+              Frete grátis. Do nosso estoque até você, com rastreamento.
+            </h2>
+            <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground">
+              Seu iPhone é preparado com cuidado, enviado em embalagem protegida e acompanhado por código de rastreio. Você sabe onde o pedido está até a entrega.
+            </p>
+            <div className="mt-9 grid gap-5 sm:grid-cols-2">
+              <div className="flex items-start gap-4 border-t border-border pt-5">
+                <Truck className="mt-0.5 shrink-0 text-brand" size={21} strokeWidth={1.6} />
+                <div>
+                  <h3 className="text-sm font-semibold">Frete grátis nacional</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">Enviamos sem custo de frete para qualquer região do Brasil.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 border-t border-border pt-5">
+                <ShieldCheck className="mt-0.5 shrink-0 text-brand" size={21} strokeWidth={1.6} />
+                <div>
+                  <h3 className="text-sm font-semibold">Acompanhamento e suporte</h3>
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">Nossa equipe acompanha você do pagamento ao recebimento.</p>
+                </div>
+              </div>
+            </div>
+            <a
+              className="button button-primary mt-10"
+              href={whatsapp("Olá! Quero comprar meu iPhone com frete grátis e acompanhar a entrega pelo rastreamento.")}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Comprar com segurança <ArrowUpRight size={16} />
+            </a>
+          </div>
+
+          <div className="border border-border bg-background p-6 sm:p-9" aria-label="Exemplo de acompanhamento do pedido">
+            <div className="flex items-start justify-between gap-5 border-b border-border pb-7">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-brand">Rastreamento do pedido</p>
+                <p className="mt-3 text-sm text-muted-foreground">Acompanhe cada atualização da sua entrega.</p>
+              </div>
+              <span className="grid size-11 shrink-0 place-items-center rounded-full bg-brand/10 text-brand">
+                <Search size={20} aria-hidden="true" />
+              </span>
+            </div>
+
+            <div className="mt-8" aria-label="Etapas da entrega">
+              {[
+                [PackageCheck, "Pedido confirmado", "Compra aprovada e aparelho reservado para você."],
+                [Truck, "Em transporte", "Código de rastreio enviado para acompanhar o trajeto."],
+                [MapPin, "Entregue", "Recebimento confirmado no destino informado."],
+              ].map(([Icon, title, text], stepIndex) => {
+                const StepIcon = Icon as typeof PackageCheck;
+                const isLast = stepIndex === 2;
+                return (
+                  <div key={title as string} className="relative flex gap-5 pb-8 last:pb-0">
+                    {!isLast && <span className="absolute left-[19px] top-10 h-[calc(100%-2.5rem)] w-px bg-brand/40" />}
+                    <span className="relative z-10 grid size-10 shrink-0 place-items-center rounded-full border border-brand bg-background text-brand">
+                      <StepIcon size={17} strokeWidth={1.8} />
+                    </span>
+                    <div className="pt-1.5">
+                      <h3 className="text-sm font-semibold">{title as string}</h3>
+                      <p className="mt-2 text-sm leading-6 text-muted-foreground">{text as string}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-8 flex items-center gap-3 border-t border-border pt-6 text-sm text-muted-foreground">
+              <ShieldCheck size={18} className="shrink-0 text-brand" />
+              Você recebe o código de rastreio e não fica sem informação sobre o pedido.
+            </div>
           </div>
         </div>
       </section>
