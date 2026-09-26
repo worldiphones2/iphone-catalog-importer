@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { queryOptions, useQueryClient, useSuspenseQuery } from "@tanstack/react-query";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -16,22 +15,16 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
-import { useEffect, useState, type CSSProperties } from "react";
+import { useState, type CSSProperties } from "react";
 
 import heroImage from "@/assets/world-iphones-hero.jpg";
 import lineupImage from "@/assets/world-iphones-lineup.jpg";
-import { listPublicProducts, type PublicProduct } from "@/lib/products.functions";
+import { PRODUCTS, type Product } from "@/data/products";
 import { formatPrice } from "@/lib/format";
 import { getOfficialVariants } from "@/lib/product-images";
-import { supabase } from "@/integrations/supabase/client";
-
-const productsQuery = queryOptions({
-  queryKey: ["public-products"],
-  queryFn: () => listPublicProducts(),
-});
 
 export const Route = createFileRoute("/")({
-  loader: ({ context }) => context.queryClient.ensureQueryData(productsQuery),
+
   errorComponent: () => (
     <main className="grid min-h-screen place-items-center bg-background px-6 text-center text-foreground">
       <p className="text-sm text-muted-foreground">
