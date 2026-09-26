@@ -234,14 +234,21 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
           {String(index + 1).padStart(2, "0")}
         </span>
       </div>
-      <div className="product-stage relative">
-        {activeImage ? (
-          <img
-            src={activeImage}
-            alt={`${product.name} ${activeVariant?.name ?? product.capacity} — vista ${imageIndex + 1}`}
-            className={`size-full object-contain p-5 ${useOfficialGallery ? `product-phone-image product-phone-image-${imageIndex + 1}` : ""}`}
-            loading="lazy"
-          />
+      <div className="product-stage relative overflow-hidden">
+        {activeImages.length > 0 ? (
+          activeImages.map((imgUrl, imgIdx) => (
+            <img
+              key={imgUrl}
+              src={imgUrl}
+              alt={`${product.name} ${activeVariant?.name ?? product.capacity}`}
+              className={`size-full object-contain p-5 transition-opacity duration-1000 ease-in-out ${
+                imgIdx === imageIndex
+                  ? "opacity-100 relative z-10"
+                  : "opacity-0 absolute inset-0 z-0 pointer-events-none"
+              }`}
+              loading="lazy"
+            />
+          ))
         ) : (
           <PhoneVisual tone={product.tone} />
         )}

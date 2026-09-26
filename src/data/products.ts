@@ -16,21 +16,6 @@ export type Product = {
 
 export const PRODUCTS: Product[] = [
   {
-    id: "iphone-air",
-    name: "iPhone Air",
-    capacity: "256 GB",
-    condition: "Novo • Ultra Fino",
-    badge: "Design Ultra Fino • 1 unidade",
-    price: 6999,
-    compare_at_price: 8999,
-    is_on_sale: true,
-    stock_quantity: 1,
-    installment: "",
-    tone: "titanium",
-    image_url: "/iphone-air-1.png",
-    images: ["/iphone-air-1.png", "/iphone-air-2.png"],
-  },
-  {
     id: "iphone-18-pro",
     name: "iPhone 18 Pro",
     capacity: "512 GB + AppleCare+",
@@ -85,6 +70,21 @@ export const PRODUCTS: Product[] = [
     installment: "",
     tone: "titanium",
     image_url: "/iphone-17-lineup.png",
+  },
+  {
+    id: "iphone-air",
+    name: "iPhone Air",
+    capacity: "256 GB",
+    condition: "Novo • Ultra Fino",
+    badge: "Design Ultra Fino • 1 unidade",
+    price: 6999,
+    compare_at_price: 8999,
+    is_on_sale: true,
+    stock_quantity: 1,
+    installment: "",
+    tone: "titanium",
+    image_url: "/iphone-air-1.png",
+    images: ["/iphone-air-1.png", "/iphone-air-2.png"],
   },
   {
     id: "iphone-16-pro-max",
