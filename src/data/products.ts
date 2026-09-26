@@ -50,8 +50,9 @@ export const PRODUCTS: Product[] = [
     compare_at_price: null,
     is_on_sale: false,
     stock_quantity: 3,
-    installment: "ou 12x de R$ 358,25",
+    installment: "",
     tone: "blue",
+    image_url: "/iphone-15-lineup.png",
   },
   {
     id: "iphone-14",
