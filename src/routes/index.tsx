@@ -116,7 +116,7 @@ function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
-      <div className="page-shell flex h-20 items-center justify-between">
+      <div className="page-shell flex h-16 items-center justify-between sm:h-20">
         <Logo />
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Navegação principal">
           {links.map(([label, href]) => (
@@ -151,6 +151,16 @@ function Header() {
               {label}
             </a>
           ))}
+          <a
+            className="button button-primary mt-3 w-full"
+            href={whatsapp("Olá! Quero conhecer os iPhones disponíveis na World iPhones.")}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => setOpen(false)}
+          >
+            Falar no WhatsApp
+            <ArrowUpRight size={15} />
+          </a>
         </nav>
       )}
     </header>
@@ -358,7 +368,7 @@ function Index() {
     <main className="overflow-hidden bg-background text-foreground">
       <Header />
 
-      <section id="inicio" className="relative min-h-[760px] border-b border-border pt-20">
+      <section id="inicio" className="relative min-h-[620px] border-b border-border pt-16 sm:min-h-[760px] sm:pt-20">
         <img
           src={heroImage}
           alt="iPhone em titânio preto visto de perto"
@@ -367,10 +377,10 @@ function Index() {
           height={1000}
         />
         <div className="hero-overlay absolute inset-0" />
-        <div className="page-shell relative flex min-h-[680px] items-center py-20">
+        <div className="page-shell relative flex min-h-[560px] items-center py-16 sm:min-h-[680px] sm:py-20">
           <div className="max-w-3xl animate-rise">
             <p className="eyebrow">World iPhones</p>
-            <h1 className="mt-7 max-w-3xl text-5xl font-light leading-[1.04] sm:text-6xl lg:text-7xl">
+            <h1 className="mt-7 max-w-3xl text-4xl font-light leading-[1.08] sm:text-6xl lg:text-7xl">
               Seu próximo iPhone começa com uma escolha de confiança.
             </h1>
             <p className="mt-7 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
@@ -396,19 +406,19 @@ function Index() {
         </div>
       </section>
 
-      <section id="catalogo" className="section-pad border-b border-border">
+      <section id="catalogo" className="section-pad scroll-mt-16 border-b border-border sm:scroll-mt-20">
         <div className="page-shell">
           <div className="section-heading">
             <div>
               <p className="eyebrow">Catálogo</p>
-              <h2 className="mt-5 text-4xl font-light sm:text-5xl">Todos os iPhones, preços abaixo da média.</h2>
+              <h2 className="mt-5 text-3xl font-light sm:text-5xl">Todos os iPhones, preços abaixo da média.</h2>
             </div>
             <p className="max-w-md text-sm leading-6 text-muted-foreground">
               Estoque limitado e atualizado em tempo real. Os modelos em oferta saem rápido — confirme a
               disponibilidade antes que a última unidade acabe.
             </p>
           </div>
-          <div className="mt-14 grid gap-4 lg:grid-cols-3">
+          <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((product, index) => (
               <ProductCard key={product.id} product={product} index={index} />
             ))}
@@ -424,11 +434,11 @@ function Index() {
         </div>
       </section>
 
-      <section id="diferenciais" className="section-pad border-b border-border">
+      <section id="diferenciais" className="section-pad scroll-mt-16 border-b border-border sm:scroll-mt-20">
         <div className="page-shell grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
           <div>
             <p className="eyebrow">Por que a World iPhones?</p>
-            <h2 className="mt-5 text-4xl font-light leading-tight sm:text-5xl">
+            <h2 className="mt-5 text-3xl font-light leading-tight sm:text-5xl">
               Muito além de um aparelho.
             </h2>
             <p className="mt-6 max-w-md leading-7 text-muted-foreground">
@@ -455,11 +465,11 @@ function Index() {
         </div>
       </section>
 
-      <section id="envio" className="border-b border-border bg-card">
+      <section id="envio" className="scroll-mt-16 border-b border-border bg-card sm:scroll-mt-20">
         <div className="page-shell grid gap-14 py-24 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-24 lg:py-32">
           <div>
             <p className="eyebrow">Entrega segura em todo o Brasil</p>
-            <h2 className="mt-5 max-w-xl text-4xl font-light leading-tight sm:text-5xl">
+            <h2 className="mt-5 max-w-xl text-3xl font-light leading-tight sm:text-5xl">
               Frete grátis. Do nosso estoque até você, com rastreamento.
             </h2>
             <p className="mt-6 max-w-xl text-base leading-7 text-muted-foreground">
@@ -548,7 +558,7 @@ function Index() {
           <div className="flex items-center px-6 py-20 sm:px-12 lg:px-20">
             <div className="max-w-lg">
               <p className="eyebrow">Tecnologia que combina com você</p>
-              <h2 className="mt-6 text-4xl font-light leading-tight sm:text-5xl">
+              <h2 className="mt-6 text-3xl font-light leading-tight sm:text-5xl">
                 O iPhone certo para a sua rotina.
               </h2>
               <p className="mt-7 leading-7 text-muted-foreground">
@@ -567,10 +577,10 @@ function Index() {
         </div>
       </section>
 
-      <section id="como-funciona" className="section-pad border-b border-border">
+      <section id="como-funciona" className="section-pad scroll-mt-16 border-b border-border sm:scroll-mt-20">
         <div className="page-shell">
           <p className="eyebrow">Como funciona</p>
-          <h2 className="mt-5 text-4xl font-light sm:text-5xl">Simples do início ao fim.</h2>
+          <h2 className="mt-5 text-3xl font-light sm:text-5xl">Simples do início ao fim.</h2>
           <div className="process-line mt-16 grid gap-10 md:grid-cols-3">
             {[
               ["01", "Escolha", "Explore os modelos e encontre seus favoritos."],
@@ -612,11 +622,11 @@ function Index() {
         </div>
       </section>
 
-      <section id="duvidas" className="section-pad border-b border-border">
+      <section id="duvidas" className="section-pad scroll-mt-16 border-b border-border sm:scroll-mt-20">
         <div className="page-shell grid gap-14 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
           <div>
             <p className="eyebrow">Dúvidas</p>
-            <h2 className="mt-5 text-4xl font-light sm:text-5xl">Perguntas frequentes.</h2>
+            <h2 className="mt-5 text-3xl font-light sm:text-5xl">Perguntas frequentes.</h2>
           </div>
           <div className="border-t border-border">
             {faqs.map((faq) => (
@@ -635,7 +645,7 @@ function Index() {
       <section className="section-pad text-center">
         <div className="page-shell">
           <PackageCheck size={28} strokeWidth={1.3} className="mx-auto text-brand" />
-          <h2 className="mx-auto mt-7 max-w-3xl text-4xl font-light leading-tight sm:text-5xl">
+          <h2 className="mx-auto mt-7 max-w-3xl text-3xl font-light leading-tight sm:text-5xl">
             Seu próximo iPhone começa aqui.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-muted-foreground">
