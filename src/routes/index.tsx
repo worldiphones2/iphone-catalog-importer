@@ -62,7 +62,7 @@ export const Route = createFileRoute("/")({
 
 const PHONE_NUMBER = "5547992533977";
 const whatsapp = (message: string) =>
-  `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(message)}`;
+  `https://api.whatsapp.com/send?phone=${PHONE_NUMBER}&text=${encodeURIComponent(message)}`;
 
 
 const faqs = [

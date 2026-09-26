@@ -134,7 +134,7 @@ function RootComponent() {
 const WHATSAPP_NUMBER = "5547992533977";
 
 function WhatsAppFloat() {
-  const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  const href = `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(
     "Olá! Quero conhecer os iPhones disponíveis na World iPhones."
   )}`;
 
