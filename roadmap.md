@@ -1,3 +1,4 @@
 - [x] Manter o catálogo como lista estática, sem painel administrativo
 - [x] Remover as imagens de display dos iPhones
 - [x] Adicionar envio grátis para todo o Brasil com destaque para rastreamento
+- [x] Remover o botão flutuante verde do WhatsApp (continua: clique no produto, botão do card e "Falar com especialista")
