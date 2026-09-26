@@ -39,6 +39,7 @@ export const PRODUCTS: Product[] = [
     stock_quantity: 4,
     installment: "",
     tone: "graphite",
+    image_url: "/iphone-16-pro-lineup.png",
   },
   {
     id: "iphone-16",
