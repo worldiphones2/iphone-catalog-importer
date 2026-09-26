@@ -240,7 +240,13 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
       onClick={(event) => {
         const target = event.target as HTMLElement;
         if (target.closest("button, a")) return;
-        window.open(whatsapp(whatsappMessage), "_blank", "noopener");
+        const link = document.createElement("a");
+        link.href = whatsapp(whatsappMessage);
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
       }}
     >
       <div className="flex items-center justify-between gap-3 px-5 pt-5">
