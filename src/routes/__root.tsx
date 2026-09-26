@@ -139,9 +139,10 @@ function useWhatsAppDesktopRedirect() {
     if (isMobile) return;
     const handler = (event: MouseEvent) => {
       const link = (event.target as HTMLElement | null)?.closest?.("a") as HTMLAnchorElement | null;
-      if (!link || !link.href.startsWith("https://wa.me/")) return;
+      if (!link) return;
+      if (!link.href.startsWith("https://wa.me/") && !link.href.startsWith("https://api.whatsapp.com/send")) return;
       const url = new URL(link.href);
-      const phone = url.pathname.replace(/\D/g, "");
+      const phone = (url.searchParams.get("phone") || url.pathname).replace(/\D/g, "");
       const text = url.searchParams.get("text") ?? "";
       link.href = `https://web.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(text)}`;
     };
