@@ -67,4 +67,18 @@ export const PRODUCTS: Product[] = [
     tone: "blue",
     image_url: "/iphone-13-lineup.png",
   },
+  {
+    id: "iphone-14",
+    name: "iPhone 14",
+    capacity: "128 GB",
+    condition: "Seminovo • Impecável",
+    badge: "Oferta",
+    price: 3599,
+    compare_at_price: 3999,
+    is_on_sale: true,
+    stock_quantity: 4,
+    installment: "12× de R$ 299,91",
+    tone: "purple",
+    image_url: "/iphone-14-lineup.png",
+  },
 ];
