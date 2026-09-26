@@ -227,8 +227,22 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
     : 0;
   const soldOut = product.stock_quantity <= 0;
 
+  const productSubject = `${product.name} ${product.capacity}${
+    activeVariant?.name ? ` na cor ${activeVariant.name}` : ""
+  }`;
+  const whatsappMessage = soldOut
+    ? `Olá! Quero avisos quando o ${productSubject} voltar ao estoque.`
+    : `Olá! Quero garantir o ${productSubject} por ${formatPrice(product.price)}. Ainda está disponível?`;
+
   return (
-    <article className="product-card">
+    <article
+      className="product-card cursor-pointer"
+      onClick={(event) => {
+        const target = event.target as HTMLElement;
+        if (target.closest("button, a")) return;
+        window.open(whatsapp(whatsappMessage), "_blank", "noopener");
+      }}
+    >
       <div className="flex items-center justify-between gap-3 px-5 pt-5">
         <div className="flex min-w-0 flex-wrap items-center gap-2">
           <span className="product-badge">{product.badge}</span>
