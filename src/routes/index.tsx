@@ -20,6 +20,7 @@ import {
 } from "lucide-react";
 import { useState, useEffect, type CSSProperties } from "react";
 
+import brandLogo from "@/assets/world-iphones-logo.png.asset.json";
 import heroImage from "@/assets/world-iphones-hero.jpg";
 import lineupImage from "@/assets/world-iphones-lineup.jpg";
 import { PRODUCTS, type Product } from "@/data/products";
