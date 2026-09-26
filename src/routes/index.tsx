@@ -303,7 +303,6 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
               <p className="text-xs text-muted-foreground">A partir de</p>
             )}
             <p className="mt-1 text-xl font-semibold text-foreground">{formatPrice(product.price)}</p>
-            <p className="mt-1 text-xs text-muted-foreground">{product.installment}</p>
           </div>
           <a
             className="icon-button shrink-0"
