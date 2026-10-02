@@ -2,4 +2,4 @@
 - [x] Remover as imagens de display dos iPhones
 - [x] Adicionar envio grátis para todo o Brasil com destaque para rastreamento
 - [x] Remover o botão flutuante verde do WhatsApp (continua: clique no produto, botão do card e "Falar com especialista")
-- [x] Ajustar preços da lista estática (redução de 30% e alta de 15% aplicadas)
+- [x] Ajustar preços da lista estática (redução de 30%, alta de 15% e nova redução de 15% aplicadas)
